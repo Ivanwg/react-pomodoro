@@ -1,11 +1,14 @@
 import React from 'react';
+import { cn } from '@/shared/lib/utils';
 
-const {{pascalCase name}} = () => {
-    return (
-        <div>
-            Implement me!
-        </div>
-    );
+interface {{pascalCase name}}Props {
+  className?: string
+}
+
+export const {{pascalCase name}}: React.FC<{{pascalCase name}}Props> = ({ className }) => {
+  return (
+    <div className={cn('', className)}>
+
+    </div>
+  );
 };
-
-export default {{pascalCase name}};
