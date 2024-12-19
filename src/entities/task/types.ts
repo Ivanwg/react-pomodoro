@@ -7,5 +7,6 @@ export interface Task {
 
 export interface TaskListStore {
   items: Array<Task>
-  loading: boolean
+  loading: boolean,
+  error: string | null
 }
