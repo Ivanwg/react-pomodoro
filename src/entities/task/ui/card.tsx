@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { cn } from '@/shared/lib/utils'
 import { Task } from '../types'
-import { EllipsisVertical } from 'lucide-react'
+import { CircleMinus, CirclePlus, EllipsisVertical, PencilLine, Trash2 } from 'lucide-react'
+import { Dropdown } from '@/shared/ui'
 
 // TODO - разбитие item на составные props ?
 interface CardProps {
@@ -23,9 +24,29 @@ export const Card: React.FC<CardProps> = ({ className, item }) => {
         value={item.name}
         className='flex-grow bg-transparent p-0'
       />
-      <button className='py-2'>
-        <EllipsisVertical size={20} className='text-current' />
-      </button>
+      <Dropdown.DropdownMenu>
+        <Dropdown.DropdownMenuTrigger className='p-2'>
+          <EllipsisVertical size={20} className='text-current' />
+        </Dropdown.DropdownMenuTrigger>
+        <Dropdown.DropdownMenuContent className='px-0'>
+          <Dropdown.DropdownMenuItem className='flex items-center gap-2 px-4 py-2'>
+            <CirclePlus size={16} className='text-current' />
+            Увеличить
+          </Dropdown.DropdownMenuItem>
+          <Dropdown.DropdownMenuItem className='flex items-center gap-2 px-4 py-2'>
+            <CircleMinus size={16} className='text-current' />
+            Уменьшить
+          </Dropdown.DropdownMenuItem>
+          <Dropdown.DropdownMenuItem className='flex items-center gap-2 px-4 py-2'>
+            <PencilLine size={16} className='text-current' />
+            Редактировать
+          </Dropdown.DropdownMenuItem>
+          <Dropdown.DropdownMenuItem className='flex items-center gap-2 px-4 py-2'>
+            <Trash2 size={16} className='text-current' />
+            Удалить
+          </Dropdown.DropdownMenuItem>
+        </Dropdown.DropdownMenuContent>
+      </Dropdown.DropdownMenu>
     </div>
   )
 }

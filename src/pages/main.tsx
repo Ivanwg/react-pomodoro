@@ -1,7 +1,6 @@
-import { TasksList as TasksListFeature } from '@/features'
+import { AddTaskForm, TasksList as TasksListFeature } from '@/features'
 import { MainLayout } from '@/shared/layouts'
 import { Container } from '@/shared/ui'
-import React from 'react'
 
 export const MainPage = () => {
   return (
@@ -14,6 +13,7 @@ export const MainPage = () => {
           <div className='lg:col-start-2 lg:row-start-1 lg:row-end-3 rounded-2xl bg-white/20 p-4'>
             Timer ticker
           </div>
+          <AddTaskForm />
           <TasksListFeature />
         </div>
       </Container>
