@@ -1,10 +1,10 @@
-import { TaskListStore } from "../types"
+import { Task, TaskListStore } from "../types"
 
 
 enum ActionTypes {
   FETCH_LIST = 'FETCH_LIST',
-  CLEAR = 'CLEAR'
-
+  CLEAR = 'CLEAR_LIST',
+  SET = 'SET_LIST'
 }
 
 const initialState = {
@@ -26,6 +26,13 @@ export const reducer = (state: TaskListStore = initialState, action: Action): Ta
         loading: true
       }
     } 
+    case ActionTypes.SET: {
+      return {
+        ...state,
+        loading: false,
+        items: action.payload
+      }
+    } 
     case ActionTypes.CLEAR: {
       return {
         ...state,
@@ -39,3 +46,9 @@ export const reducer = (state: TaskListStore = initialState, action: Action): Ta
     }
   }
 }
+
+// Actions Creators
+export const setTasks = (payload: Array<Task>) => ({
+  type: ActionTypes.SET,
+  payload
+})

@@ -14,6 +14,7 @@ export const TasksList: React.FC<TasksListProps> = ({ className }) => {
   return (
     // TODO - контроль лоадера в каком компоненте?
     // TODO - контроль ошибки в каком компоненте ?
+    // TODO - ниже как ниже лежащему коду взять коллбэки по каждому taskItem
     <div className={cn('', className)}>
       {loading ? <Task.ListSkeleton /> : <Task.List items={items} />}
     </div>
