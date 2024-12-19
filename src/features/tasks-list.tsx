@@ -9,8 +9,8 @@ interface TasksListProps {
 }
 
 export const TasksList: React.FC<TasksListProps> = ({ className }) => {
-  // const { items, loading } = useGetTasks()
-  const { items, loading, error } = useTasksSelector((state) => state)
+  const { items, loading } = useGetTasks()
+  // const { items, loading, error } = useTasksSelector((state) => state)
   return (
     // TODO - контроль лоадера в каком компоненте?
     // TODO - контроль ошибки в каком компоненте ?
