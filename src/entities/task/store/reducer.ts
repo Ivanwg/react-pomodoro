@@ -5,9 +5,10 @@ import { Task, TaskListStore } from "../types"
 enum ActionTypes {
   LOADING = 'loading',
   UNLOADING = 'unloading',
+  ERROR = 'ERROR',
   CLEAR = 'CLEAR_LIST',
   SET = 'SET_LIST',
-  ERROR = 'ERROR',
+  
 }
 
 const initialState = {
