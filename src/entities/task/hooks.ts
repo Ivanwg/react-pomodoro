@@ -1,32 +1,30 @@
 import { useEffect, useState } from 'react'
 import { Task, TaskListStore } from './types'
-import { getItems } from './api'
+import { getItems } from './browser'
+import { useDispatch } from 'react-redux'
+import { useTasksSelector } from './store/selector'
 
 export const useGetTasks = (): TaskListStore => {
-  const [loading, setLoading] = useState(false)
   const [items, setItems] = useState<Array<Task>>([])
+  const dispatch = useDispatch()
+  const { items, loading, error } = useTasksSelector((state) => state)
 
   useEffect(() => {
-    if (!loading) {
-      setLoading(true)
-      // Проверка сервиса
-      if (true) {
-        console.log(getItems)
-        getItems()
-          .then((items) => {
-            setItems(items)
-          })
-          .catch((err) => {})
-          .finally(() => {
-            setLoading(false)
-          })
-      } else {
-      }
-    }
+
+    dispatch(setLoading())
+    new Promise((resolve) => {
+      resolve([])
+    }).then(res => {
+      dispatch(setTasks(res))
+    }).catch(err => {
+      console.error(err)
+      dispatch(setError(err))
+    }).finally(() => {
+      dispatch(unload())
+    })
   }, [])
 
   return {
-    loading,
-    items,
+    items, loading
   }
 }
