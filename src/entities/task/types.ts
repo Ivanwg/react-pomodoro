@@ -1,12 +1,12 @@
 export interface Task {
-  id: string | number
-  name: string
-  coins: number //pomodoros
-  completed: boolean
+  id: string,
+  name: string,
+  coins: number, //pomodoros
+  completed: boolean,
 }
 
 export interface TaskListStore {
-  items: Array<Task>
+  items: Array<Task>,
   loading: boolean,
-  error: string | null
+  error: string | null,
 }
